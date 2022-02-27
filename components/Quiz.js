@@ -1,4 +1,3 @@
-import { responseSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
 import { useState, useEffect } from "react"
 
 export default function Quiz() {
@@ -9,7 +8,8 @@ export default function Quiz() {
     const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
     const pickAnswer = (e) => {
-        let userAnswer = e.target.outerText;
+        e.preventDefault();
+        let userAnswer = e.target.elements.answers.value;
         if (quiz[number].answer === userAnswer) setPoints(points + 1);
         setNumber(number + 1);
     }
@@ -33,13 +33,18 @@ export default function Quiz() {
   return (
     <div>
         {quiz[number] &&
-        <>
+        <form onSubmit={pickAnswer}>
         <h1>{quiz[number].question}</h1>
-        {quiz[number].options.map((item, index) =>(
-            <h2 key={index} onClick={pickAnswer}>{item}</h2>
+            {quiz[number].options.map((item, index) =>(
+                <label key={index}>
+                    <input type="radio" name="answers" key={index} value={item}></input>
+                    {item}
+                </label>
             ))}
-        </>
+        <button type="submit">Submit</button>
+        </form>
         }
+
     </div>
   )
 }
