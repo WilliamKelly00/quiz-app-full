@@ -34,9 +34,9 @@ export default function Quiz() {
     <div>
         {quiz[number] &&
         <>
-        <h1 dangerouslySetInnerHTML={{__html: quiz[number].question}}></h1>
+        <h1>{quiz[number].question}</h1>
         {quiz[number].options.map((item, index) =>(
-            <h2 key={index} dangerouslySetInnerHTML={{__html: item}} onClick={pickAnswer}></h2>
+            <h2 key={index} onClick={pickAnswer}>{item}</h2>
             ))}
         </>
         }
