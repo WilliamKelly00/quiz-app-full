@@ -10,7 +10,7 @@ export default function Quiz() {
     const pickAnswer = (e) => {
         e.preventDefault();
         let userAnswer = e.target.elements.answers.value;
-        if (quiz[number].answer === userAnswer) setPoints(points + 1);
+        if (quiz[number].answer === userAnswer) setPoints(points + 50);
         setNumber(number + 1);
     }
 
@@ -34,7 +34,8 @@ export default function Quiz() {
     <div>
         {quiz[number] &&
         <form onSubmit={pickAnswer}>
-        <h1>{quiz[number].question}</h1>
+        <h1 dangerouslySetInnerHTML={{__html: quiz[number].question}}></h1>
+        <h2>Points: {points}</h2>
             {quiz[number].options.map((item, index) =>(
                 <label key={index}>
                     <input type="radio" name="answers" key={index} value={item}></input>
