@@ -35,15 +35,17 @@ export default function Quiz() {
     <div>
         {quiz[number] &&
         <form className={styles.form} onSubmit={pickAnswer}>
+        <div className={styles.question}>
         <h1 dangerouslySetInnerHTML={{__html: quiz[number].question}}></h1>
+        </div>
         <h2>Points: {points}</h2>
             {quiz[number].options.map((item, index) =>(
-                <label key={index}>
+                <label className={styles.btn} key={index}>
                     <input type="radio" name="answers" key={index} value={item}></input>
                     {item}
                 </label>
             ))}
-        <button type="submit">Submit</button>
+        <button className={styles.submitBtn} type="submit">Submit</button>
         </form>
         }
 
