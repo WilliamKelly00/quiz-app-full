@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import styles from '../styles/Quiz.module.css'
 
 export default function Quiz() {
     const [quiz, setQuiz] = useState([]);
@@ -33,7 +34,7 @@ export default function Quiz() {
   return (
     <div>
         {quiz[number] &&
-        <form onSubmit={pickAnswer}>
+        <form className={styles.form} onSubmit={pickAnswer}>
         <h1 dangerouslySetInnerHTML={{__html: quiz[number].question}}></h1>
         <h2>Points: {points}</h2>
             {quiz[number].options.map((item, index) =>(
