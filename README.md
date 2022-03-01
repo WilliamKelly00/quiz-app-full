@@ -1,3 +1,3 @@
 # Quiz App
 
-Basic lightweight quiz application made using Nextjs and Opentdb
+Full version of the quiz-app repository, made using Nextjs and Opentdb
