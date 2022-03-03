@@ -15,10 +15,11 @@ export default function Quiz() {
         setNumber(number + 1);
     }
 
-    useEffect(() => {
+    const getData = () =>{
         fetch("https://opentdb.com/api.php?amount=10&category=18&type=multiple")
             .then(res => res.json())
             .then(data => {
+                console.log("api called!");
                 setQuiz(data.results.map(item => (
                     {
                         question: item.question,
@@ -28,6 +29,10 @@ export default function Quiz() {
                 )));
             })
             .catch(err => console.error(err))
+    }
+
+    useEffect(() => {
+        getData();
     }, []);
 
 
